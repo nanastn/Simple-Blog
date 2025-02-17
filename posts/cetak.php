@@ -1,7 +1,7 @@
 <?php
 
 include "../koneksi/koneksi.php";
-$sql = "SELECT * FROM supplier ";      
+$sql = "SELECT * FROM posts ";      
 $query = mysqli_query($koneksi, $sql);
 
 ?>
@@ -12,32 +12,34 @@ $query = mysqli_query($koneksi, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href="../css/bootstrap.min.css">
-    <title>Index supplier</title>
+    <title>Index Post</title>
 </head>
 <body>
 
 
-    <h1 align="center">Index pembeli</h1>
+<h1 align="center">Index Post Artikel</h1>
     <div class="container mt-3">
         <div class="card shadow">
             <div class="card-header navbar bg-primary">
-                <p class="m-2"><b>Data pembeli</b></p>
-                
+                <p class="m-2"><b>Data Post Artikel</b></p>
+                <a href="tambah.php"><button class="btn btn-outline-light">Tambah</button></a>
             </div>
             <div class="card-body">
                 <table class="table table-striped table-hover text-center">
                     <tr class="table-dark">
-                        <th>ID Supplier</th>
-                        <th>Nama Supplier</th>
-                        <th>Alamat</th>
-                        <th>NO HP</th>
+                        <th>ID Post Artikel</th>
+                        <th>Judul Artikel</th>
+                        <th>Konten</th>
+                        <th>Tanggal</th>
+                        <th>Aksi</th>
                     </tr>
                     <?php foreach ($query as $r) : ?>
                         <tr>
-                        <td><?= $r['id_supplier']?></td>
-                        <td><?= $r['nama_supplier']?></td>
-                        <td><?= $r['alamat']?></td>
-                        <td><?= $r['no_hp']?></td>
+                        <td><?= $r['id_post']?></td>
+                        <td><?= $r['title']?></td>
+                        <td><?= $r['content']?></td>
+                        <td><?= $r['created_at']?></td>
+                        <td>
                         </tr>
                         <?php endforeach; ?>
                 </table>

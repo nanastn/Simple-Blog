@@ -5,15 +5,15 @@ if(!isset($_SESSION["login"])){
 }
 include "../koneksi/koneksi.php";
 if(isset($_POST["simpan"])){
-    $nama_supplier = $_POST["nama_supplier"];
-    $alamat = $_POST["alamat"];
-    $no_hp = $_POST["no_hp"];
+    $title = $_POST["title"];
+    $content = $_POST["content"];
+    $created_at = date("Y-m-d", strtotime($_POST["created_at"]));  // Format the date properly
 
-    $sql = "INSERT INTO supplier (nama_supplier,alamat,no_hp) VALUES ('$nama_supplier','$alamat','$no_hp')";
+    $sql = "INSERT INTO posts (title, content, created_at) VALUES ('$title', '$content', '$created_at')";
     $query = mysqli_query($koneksi, $sql);
     if($query){
         header("location:index.php?tambah=berhasil");
-    }else{
+    } else {
         header("location:index.php?tambah=gagal");
     }
 }
@@ -33,18 +33,19 @@ if(isset($_POST["simpan"])){
     <div class="container mt-3">
         <div class="card shadow">
             <div class="card-header navbar bg-primary">
-                Tambah Supplier
+                Tambah Post
             </div>          
             <div class="card-body">
                 <form action="" method="post">
-                    <label for="nama_supplier"  class="mb-2 form-label">Nama Supplier</label>
-                    <input type="text" name="nama_supplier" id="nama_supplier" class="mb-2 form-control" required >
+                    <label for="title"  class="mb-2 form-label">Judul Artikel</label>
+                    <input type="text" name="title" id="title" class="mb-2 form-control" required >
 
-                    <label for="alamat"  class="mb-2 form-label">Alamat</label>
-                    <input type="text" name="alamat" id="alamat" class="mb-2 form-control" required >
+                    <label for="content"  class="mb-2 form-label">Konten</label>
+                    <input type="text" name="content" id="content" class="mb-2 form-control" required >
 
-                    <label for="no_hp"  class="mb-2 form-label">NO HP</label>
-                    <input type="number" name="no_hp" id="no_hp" class="mb-2 form-control" required >
+                    <label for="created_at" class="mb-2 form-label">Tanggal</label>
+                    <input type="date" name="created_at" id="created_at" class="mb-2 form-control" required>
+
 
                     <button name="simpan" class="btn btn-outline-primary">Tambah</button>
                     <a href="index.php" class="btn btn-outline-warning">Kembali</a>

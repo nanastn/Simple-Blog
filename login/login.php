@@ -10,7 +10,7 @@ if(isset($_POST['simpan'])){
     $query = mysqli_query($koneksi, $sql);
     if(mysqli_num_rows($query)){
         $_SESSION['login'] = $username;
-        header('location:../index.php?login=sukses');
+        header('location:../posts/index.php?login=sukses');
 }else{
     header('location:login.php?login=gagal');
 }

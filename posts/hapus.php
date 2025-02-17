@@ -4,9 +4,9 @@ if(!isset($_SESSION["login"])){
     header("location:../login/login.php?logindulu");
 }
 include "../koneksi/koneksi.php";
-    $id_supplier = $_GET["id_supplier"];
+    $id_post = $_GET["id_post"];
 
-    $sql = "DELETE FROM supplier WHERE id_supplier = '$id_supplier' ";
+    $sql = "DELETE FROM posts WHERE id_post = '$id_post' ";
     $query = mysqli_query($koneksi, $sql);
     if($query){
         header("location:index.php?hapus=berhasil");
